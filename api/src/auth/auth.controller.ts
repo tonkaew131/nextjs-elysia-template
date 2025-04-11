@@ -48,7 +48,7 @@ export const AuthController = new Elysia({
         { body: SignInPayloadDto, response: { 200: SignInResponseDto } }
     )
     .post(
-        '/sign-out',
+        '/signout',
         async (context) => {
             const { cookie } = context;
 
