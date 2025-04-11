@@ -1,20 +1,26 @@
-# Next.js + Elysia Template
+# 🚀 Next.js + Elysia Template
 
-A starter template for building applications with Next.js and Elysia.
+A powerful, feature-rich starter template for building modern web applications with Next.js and Elysia.
 
-## Features
+## ✨ Features
 
-- **Next.js** 15 with app router
+- **Next.js 15** with [app router](https://nextjs.org/docs/app)
   - **ShadCN UI**
   - Automatic type infer from api & database schema
+
+    ![Automatic type infer](assets/type-infer.png)
+
   - Automatic useQuery & useMutation hooks generation
+
+    ![Automatic react query hooks generate](assets/hook_generate.png)
+
 - **Elysia.js** for the backend
   - **Drizzle ORM**
-  - **Lucia Auth**
+  - **Lucia Auth** (why?, because it's customizable)
 - Monorepo structure with **bun** as the package manager
   - Fully dockerized deployment
 
-## Installation
+## 🛠️ Installation
 
 Clone the repository and install dependencies:
 
@@ -27,13 +33,14 @@ cd nextjs-elysia-template
 bun i
 ```
 
-Copy `.env.template` to `.env` and update the environment variables as needed:
+Set up your environment variables:
 
 ```bash
 cp .env.template .env
+# Edit .env with your configuration
 ```
 
-## Development
+## 🔧 Development
 
 Start development database:
 
@@ -41,32 +48,34 @@ Start development database:
 docker-compose -f docker-compose.dev.yml up -d
 ```
 
-Start the development server:
+Launch the development server:
 
 ```bash
 bun dev
 ```
 
-Generate react query hooks:
+Generate React Query hooks for API integration:
 
 ```bash
 bun api:gen
 ```
 
-## Other Commands
+## 📚 Other Commands
 
-### Generate Migration
+### Database Operations
 
-Create a new database migration:
+Create a new migration:
 
 ```bash
 bun db:gen --name "migration_name"
 ```
 
-### Run Migrations
-
-Apply all pending migrations:
+Apply pending migrations:
 
 ```bash
 bun db:migrate
 ```
+
+---
+
+Happy coding! 🎉
