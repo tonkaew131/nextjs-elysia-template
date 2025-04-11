@@ -3,5 +3,8 @@
   "workspaces": [
     "api",
     "web"
-  ]
+  ],
+  "scripts": {
+    "format": "bun run --filter '*' format"
+  }
 }

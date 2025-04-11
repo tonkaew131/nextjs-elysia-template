@@ -1,15 +1,17 @@
 {
-  "name": "api",
-  "version": "1.0.50",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
-  },
-  "dependencies": {
-    "elysia": "latest"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "name": "api",
+    "version": "1.0.50",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "bun run --watch src/index.ts",
+        "format": "prettier --write --list-different ."
+    },
+    "dependencies": {
+        "elysia": "latest"
+    },
+    "devDependencies": {
+        "bun-types": "latest",
+        "prettier": "3.5.3"
+    },
+    "module": "src/index.js"
 }
