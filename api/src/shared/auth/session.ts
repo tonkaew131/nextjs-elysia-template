@@ -8,7 +8,7 @@ import { type InferSelectModel, eq } from 'drizzle-orm';
 import { db } from '@api/shared/db';
 import * as schema from '@api/shared/db/schema';
 
-export type User = InferSelectModel<typeof schema.user>;
+export type User = Omit<InferSelectModel<typeof schema.user>, 'password'>;
 export type Session = InferSelectModel<typeof schema.session>;
 
 export function generateSessionToken(): string {
@@ -48,7 +48,10 @@ export async function validateSessionToken(
     if (result.length < 1) {
         return { session: null, user: null };
     }
-    const { user, session } = result[0];
+    const {
+        user: { password, ...user },
+        session,
+    } = result[0];
     if (Date.now() >= session.expiresAt.getTime()) {
         await db
             .delete(schema.session)

@@ -4,8 +4,10 @@ import {
     invalidateSession,
     validateSessionToken,
 } from '@api/shared/auth/session';
+import { UnauthorizedError } from '@api/shared/error';
 
 import * as authService from './auth.service';
+import { ProfileResponseDto } from './dto/profile.dto';
 import { SignInPayloadDto, SignInResponseDto } from './dto/sign-in.dto';
 import { SignOutResponseDto } from './dto/sign-out.dto';
 import { SignUpPayloadDto, SignUpResponseDto } from './dto/sign-up.dto';
@@ -68,6 +70,29 @@ export const AuthController = new Elysia({
         {
             response: {
                 200: SignOutResponseDto,
+            },
+        }
+    )
+    .get(
+        '/profile',
+        async (context) => {
+            const { cookie } = context;
+            const token = cookie.session.value;
+
+            if (!token) {
+                throw new UnauthorizedError('Please sign in and try again');
+            }
+
+            const { user } = await validateSessionToken(token);
+            if (!user) {
+                throw new UnauthorizedError('Please sign in and try again');
+            }
+
+            return user;
+        },
+        {
+            response: {
+                200: ProfileResponseDto,
             },
         }
     );

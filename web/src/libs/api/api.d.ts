@@ -47,6 +47,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/auth/profile': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations['getAuthProfile'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/': {
         parameters: {
             query?: never;
@@ -196,6 +212,36 @@ export interface operations {
                     'text/plain': {
                         /** @constant */
                         message: 'Sign out successful';
+                    };
+                };
+            };
+        };
+    };
+    getAuthProfile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        id: string;
+                        email: string;
+                    };
+                    'multipart/form-data': {
+                        id: string;
+                        email: string;
+                    };
+                    'text/plain': {
+                        id: string;
+                        email: string;
                     };
                 };
             };
