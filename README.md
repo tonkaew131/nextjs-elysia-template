@@ -2,6 +2,18 @@
 
 A starter template for building applications with Next.js and Elysia.
 
+## Features
+
+- **Next.js** 15 with app router
+  - **ShadCN UI**
+  - Automatic type infer from api & database schema
+  - Automatic useQuery & useMutation hooks generation
+- **Elysia.js** for the backend
+  - **Drizzle ORM**
+  - **Lucia Auth**
+- Monorepo structure with **bun** as the package manager
+  - Fully dockerized deployment
+
 ## Installation
 
 Clone the repository and install dependencies:
@@ -33,6 +45,12 @@ Start the development server:
 
 ```bash
 bun dev
+```
+
+Generate react query hooks:
+
+```bash
+bun api:gen
 ```
 
 ## Other Commands
