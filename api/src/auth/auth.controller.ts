@@ -1,7 +1,13 @@
 import Elysia from 'elysia';
 
+import {
+    invalidateSession,
+    validateSessionToken,
+} from '@api/shared/auth/session';
+
 import * as authService from './auth.service';
 import { SignInPayloadDto, SignInResponseDto } from './dto/sign-in.dto';
+import { SignOutResponseDto } from './dto/sign-out.dto';
 import { SignUpPayloadDto, SignUpResponseDto } from './dto/sign-up.dto';
 
 export const AuthController = new Elysia({
@@ -40,4 +46,28 @@ export const AuthController = new Elysia({
             return signInResult.user;
         },
         { body: SignInPayloadDto, response: { 200: SignInResponseDto } }
+    )
+    .post(
+        '/sign-out',
+        async (context) => {
+            const { cookie } = context;
+
+            const token = cookie.session.value;
+            if (token) {
+                const { session } = await validateSessionToken(token);
+                if (session) {
+                    await invalidateSession(session.id);
+                }
+            }
+            cookie.session.remove();
+
+            return {
+                message: 'Sign out successful',
+            };
+        },
+        {
+            response: {
+                200: SignOutResponseDto,
+            },
+        }
     );
