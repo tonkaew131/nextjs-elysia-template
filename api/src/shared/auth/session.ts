@@ -1,11 +1,12 @@
-import * as schema from '@api/shared/db/schema';
-import { eq, type InferSelectModel } from 'drizzle-orm';
+import { sha256 } from '@oslojs/crypto/sha2';
 import {
     encodeBase32LowerCaseNoPadding,
     encodeHexLowerCase,
 } from '@oslojs/encoding';
-import { sha256 } from '@oslojs/crypto/sha2';
+import { type InferSelectModel, eq } from 'drizzle-orm';
+
 import { db } from '@api/shared/db';
+import * as schema from '@api/shared/db/schema';
 
 export type User = InferSelectModel<typeof schema.user>;
 export type Session = InferSelectModel<typeof schema.session>;
