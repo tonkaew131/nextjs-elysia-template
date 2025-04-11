@@ -8,3 +8,12 @@ services:
             - 10001:3001
         environment:
             DATABASE_URL: ${DATABASE_URL}
+    web:
+        build:
+            context: .
+            dockerfile: web/Dockerfile
+        restart: always
+        ports:
+            - 10000:3000
+        environment:
+            NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
