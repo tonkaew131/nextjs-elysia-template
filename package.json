@@ -1,0 +1,7 @@
+{
+  "name": "nextjs-elysia-template",
+  "workspaces": [
+    "api",
+    "web"
+  ]
+}
