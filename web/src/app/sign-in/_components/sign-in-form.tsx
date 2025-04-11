@@ -1,23 +1,63 @@
+'use client';
+
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import Placeholder from '@public/placeholder.svg';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
+import { $api } from '@/libs/api';
 import { cn } from '@/libs/utils';
 
 export function SignInForm({
     className,
     ...props
 }: React.ComponentProps<'div'>) {
+    const router = useRouter();
+    const { mutate: signIn, isPending } = $api.useMutation(
+        'post',
+        '/auth/signin'
+    );
+
     return (
         <div className={cn('flex flex-col gap-6', className)} {...props}>
             <Card className="overflow-hidden p-0">
                 <CardContent className="grid p-0 md:grid-cols-2">
-                    <form className="p-6 md:p-8">
+                    <form
+                        className="p-6 md:p-8"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.currentTarget);
+                            const email = formData.get('email') as string;
+                            const password = formData.get('password') as string;
+                            signIn(
+                                {
+                                    body: {
+                                        email,
+                                        password,
+                                    },
+                                },
+                                {
+                                    onSuccess(data) {
+                                        toast.success(
+                                            `Login as ${data?.email}`
+                                        );
+                                        router.push('/');
+                                    },
+                                    onError(error: { message: string }) {
+                                        toast.error(
+                                            `Login failed, ${error.message}`
+                                        );
+                                    },
+                                }
+                            );
+                        }}
+                    >
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-col items-center text-center">
                                 <h1 className="text-2xl font-bold">
@@ -31,6 +71,7 @@ export function SignInForm({
                                 <Label htmlFor="email">Email</Label>
                                 <Input
                                     id="email"
+                                    name="email"
                                     type="email"
                                     placeholder="m@example.com"
                                     required
@@ -46,11 +87,22 @@ export function SignInForm({
                                         Forgot your password?
                                     </a>
                                 </div>
-                                <Input id="password" type="password" required />
+                                <Input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    required
+                                />
                             </div>
-                            <Button type="submit" className="w-full">
+
+                            <Button
+                                disabled={isPending}
+                                type="submit"
+                                className="w-full hover:cursor-pointer"
+                            >
                                 Login
                             </Button>
+
                             <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                                 <span className="bg-card text-muted-foreground relative z-10 px-2">
                                     Or continue with

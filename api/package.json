@@ -10,6 +10,7 @@
         "db:studio": "drizzle-kit studio"
     },
     "dependencies": {
+        "@elysiajs/cors": "^1.2.0",
         "@elysiajs/swagger": "^1.2.2",
         "@oslojs/crypto": "^1.0.1",
         "@oslojs/encoding": "^1.1.0",

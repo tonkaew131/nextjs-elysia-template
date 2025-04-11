@@ -1,3 +1,4 @@
+import cors from '@elysiajs/cors';
 import swagger from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
 
@@ -7,6 +8,7 @@ import { UnauthorizedError } from './shared/error';
 
 const api = new Elysia()
     .use(swagger())
+    .use(cors())
     .error({
         UnauthorizedError,
     })
