@@ -1,7 +1,7 @@
 import Elysia from 'elysia';
 
 import * as authService from './auth.service';
-import { SignInPayloadDto } from './dto/sign-in.dto';
+import { SignInPayloadDto, SignInResponseDto } from './dto/sign-in.dto';
 import { SignUpPayloadDto, SignUpResponseDto } from './dto/sign-up.dto';
 
 export const AuthController = new Elysia({
@@ -27,4 +27,17 @@ export const AuthController = new Elysia({
             },
         }
     )
-    .post('/signin', async (context) => {}, { body: SignInPayloadDto });
+    .post(
+        '/signin',
+        async (context) => {
+            const { body, cookie } = context;
+
+            const signInResult = await authService.signIn(body);
+            cookie.session.set({
+                value: signInResult.token,
+            });
+
+            return signInResult.user;
+        },
+        { body: SignInPayloadDto, response: { 200: SignInResponseDto } }
+    );
