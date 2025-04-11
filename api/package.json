@@ -6,7 +6,8 @@
         "dev": "bun run --watch src/app.ts",
         "format": "prettier --write --list-different .",
         "db:gen": "drizzle-kit generate",
-        "db:migrate": "drizzle-kit migrate"
+        "db:migrate": "drizzle-kit migrate",
+        "db:studio": "drizzle-kit studio"
     },
     "dependencies": {
         "@elysiajs/swagger": "^1.2.2",

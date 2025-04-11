@@ -8,7 +8,8 @@
     "format": "bun run --filter '*' format",
     "dev": "dotenv -- bun run --filter '*' dev",
     "db:gen": "bun run --filter 'api' --elide-lines=0 db:gen",
-    "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate"
+    "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate",
+    "db:studio": "dotenv -- bun run --filter 'api' --elide-lines=0 db:studio"
   },
   "devDependencies": {
     "dotenv-cli": "^8.0.0"
