@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 
 import { cn } from '@/libs/utils';
 
-export function LoginForm({
+export function SignInForm({
     className,
     ...props
 }: React.ComponentProps<'div'>) {
