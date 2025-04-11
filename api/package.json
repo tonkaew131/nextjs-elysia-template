@@ -16,9 +16,13 @@
         "argon2": "^0.41.1",
         "dotenv": "^16.5.0",
         "drizzle-orm": "^0.41.0",
+        "drizzle-typebox": "^0.3.1",
         "elysia": "latest",
         "nanoid": "^5.1.5",
         "pg": "^8.14.1"
+    },
+    "overrides": {
+        "@sinclair/typebox": "^0.34.27"
     },
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^5.2.2",
