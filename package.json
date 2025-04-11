@@ -5,6 +5,12 @@
     "web"
   ],
   "scripts": {
-    "format": "bun run --filter '*' format"
+    "format": "bun run --filter '*' format",
+    "dev": "dotenv -- bun run --filter '*' dev",
+    "db:gen": "bun run --filter 'api' --elide-lines=0 db:gen",
+    "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0"
   }
 }

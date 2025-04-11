@@ -4,14 +4,24 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "bun run --watch src/index.ts",
-        "format": "prettier --write --list-different ."
+        "format": "prettier --write --list-different .",
+        "db:gen": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate"
     },
     "dependencies": {
-        "elysia": "latest"
+        "@oslojs/crypto": "^1.0.1",
+        "@oslojs/encoding": "^1.1.0",
+        "dotenv": "^16.5.0",
+        "drizzle-orm": "^0.41.0",
+        "elysia": "latest",
+        "pg": "^8.14.1"
     },
     "devDependencies": {
+        "@types/pg": "^8.11.11",
         "bun-types": "latest",
-        "prettier": "3.5.3"
+        "drizzle-kit": "^0.30.6",
+        "prettier": "3.5.3",
+        "tsx": "^4.19.3"
     },
     "module": "src/index.js"
 }
