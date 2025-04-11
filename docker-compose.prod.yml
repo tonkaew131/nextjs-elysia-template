@@ -1,0 +1,10 @@
+services:
+    api:
+        build:
+            context: .
+            dockerfile: api/Dockerfile
+        restart: always
+        ports:
+            - 10001:3001
+        environment:
+            DATABASE_URL: ${DATABASE_URL}

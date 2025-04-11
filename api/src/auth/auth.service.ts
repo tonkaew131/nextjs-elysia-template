@@ -1,6 +1,5 @@
 import { Static } from 'elysia';
 
-import argon from 'argon2';
 import { eq, getTableColumns } from 'drizzle-orm';
 
 import { createSession, generateSessionToken } from '@api/shared/auth/session';
@@ -18,7 +17,9 @@ export const signUp = async (body: Static<typeof SignUpPayloadDto>) => {
     );
     const { password, ...rest } = body;
 
-    const passwordHashed = await argon.hash(password);
+    const passwordHashed = await Bun.password.hash(password, {
+        algorithm: 'argon2id',
+    });
     const [user] = await db
         .insert(schema.user)
         .values({ id: generateId(), ...rest, password: passwordHashed })
@@ -40,7 +41,10 @@ export const signIn = async (body: Static<typeof SignInPayloadDto>) => {
     }
 
     const { password, ...userInfo } = user;
-    const isPasswordValid = await argon.verify(user.password, body.password);
+    const isPasswordValid = await Bun.password.verify(
+        user.password,
+        body.password
+    );
     if (!isPasswordValid) {
         throw new UnauthorizedError('Invalid email or password');
     }
