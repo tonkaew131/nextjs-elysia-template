@@ -7,5 +7,5 @@ const api = new Elysia()
     .listen(3001);
 
 console.log(
-    `🦊 Elysia is running at ${api.server?.hostname}:${api.server?.port}`
+    `🦊 Elysia is running at http://${api.server?.hostname}:${api.server?.port}/swagger`
 );
