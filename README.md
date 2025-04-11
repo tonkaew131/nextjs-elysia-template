@@ -15,7 +15,19 @@ cd nextjs-elysia-template
 bun i
 ```
 
+Copy `.env.template` to `.env` and update the environment variables as needed:
+
+```bash
+cp .env.template .env
+```
+
 ## Development
+
+Start development database:
+
+```bash
+docker-compose -f docker-compose.dev.yml up -d
+```
 
 Start the development server:
 
