@@ -12,9 +12,11 @@
         "@elysiajs/swagger": "^1.2.2",
         "@oslojs/crypto": "^1.0.1",
         "@oslojs/encoding": "^1.1.0",
+        "argon2": "^0.41.1",
         "dotenv": "^16.5.0",
         "drizzle-orm": "^0.41.0",
         "elysia": "latest",
+        "nanoid": "^5.1.5",
         "pg": "^8.14.1"
     },
     "devDependencies": {
