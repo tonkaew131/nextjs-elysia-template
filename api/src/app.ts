@@ -5,6 +5,7 @@ import { Elysia } from 'elysia';
 import { AuthController } from '@api/auth/auth.controller';
 
 import { UnauthorizedError } from './shared/error';
+import { TestController } from './test/test.controller';
 
 const api = new Elysia()
     .use(swagger())
@@ -20,6 +21,7 @@ const api = new Elysia()
         }
     })
     .use(AuthController)
+    .use(TestController)
     .get('/', () => 'Hello Elysia')
     .listen(3001);
 

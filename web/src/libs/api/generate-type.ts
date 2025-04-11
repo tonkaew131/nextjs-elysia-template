@@ -2,6 +2,9 @@ import fs from 'node:fs/promises';
 import openapiTS, { astToString } from 'openapi-typescript';
 import ts from 'typescript';
 
+const DATE = ts.factory.createTypeReferenceNode(
+    ts.factory.createIdentifier('Date')
+); // `Date`
 const FILE = ts.factory.createTypeReferenceNode(
     ts.factory.createIdentifier('File')
 ); // `File`
@@ -14,6 +17,10 @@ async function generateType() {
                 return schemaObject.nullable
                     ? ts.factory.createUnionTypeNode([FILE, NULL])
                     : FILE;
+            }
+
+            if ((schemaObject.type as string) === 'Date') {
+                return DATE;
             }
         },
     });
