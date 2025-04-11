@@ -8,7 +8,7 @@ Clone the repository and install dependencies:
 
 ```bash
 # Clone the repository
-https://github.com/tonkaew131/nextjs-elysia-template.git
+git clone https://github.com/tonkaew131/nextjs-elysia-template.git
 cd nextjs-elysia-template
 
 # Install dependencies
