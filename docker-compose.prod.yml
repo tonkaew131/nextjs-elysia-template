@@ -3,17 +3,17 @@ services:
         build:
             context: .
             dockerfile: api/Dockerfile
+            args:
+                DATABASE_URL: ${DATABASE_URL}
         restart: always
         ports:
             - 10001:3001
-        environment:
-            DATABASE_URL: ${DATABASE_URL}
     web:
         build:
             context: .
             dockerfile: web/Dockerfile
+            args:
+                NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
         restart: always
         ports:
             - 10000:3000
-        environment:
-            NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
