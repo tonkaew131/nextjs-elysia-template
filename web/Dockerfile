@@ -1,5 +1,5 @@
 # syntax=docker.io/docker/dockerfile:1
-FROM oven/bun:latest AS base
+FROM oven/bun:1.2 AS base
 
 FROM base AS deps
 

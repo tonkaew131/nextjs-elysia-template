@@ -1,4 +1,4 @@
-FROM oven/bun:1 AS build
+FROM oven/bun:1.2 AS build
 
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
