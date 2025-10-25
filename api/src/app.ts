@@ -2,8 +2,7 @@ import cors from '@elysiajs/cors';
 import swagger from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
 
-import { AuthController } from '@api/auth/auth.controller';
-
+import { auth } from './shared/auth';
 import { UnauthorizedError } from './shared/error';
 import { TestController } from './test/test.controller';
 
@@ -20,7 +19,7 @@ const api = new Elysia()
                 return error;
         }
     })
-    .use(AuthController)
+    .mount(auth.handler)
     .use(TestController)
     .get('/', () => 'Hello Elysia')
     .listen(3001);

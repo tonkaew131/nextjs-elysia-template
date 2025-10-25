@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import Placeholder from '@public/placeholder.svg';
+import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -11,18 +12,26 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-import { $api } from '@/libs/api';
+import { authClient } from '@/libs/auth-client';
 import { cn } from '@/libs/utils';
+
+const useSignIn = () => {
+    return useMutation({
+        mutationFn: async (data: { email: string; password: string }) => {
+            return authClient.signIn.email({
+                email: data.email,
+                password: data.password,
+            });
+        },
+    });
+};
 
 export function SignInForm({
     className,
     ...props
 }: React.ComponentProps<'div'>) {
     const router = useRouter();
-    const { mutate: signIn, isPending } = $api.useMutation(
-        'post',
-        '/auth/signin'
-    );
+    const { mutate: signIn, isPending } = useSignIn();
 
     return (
         <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -37,15 +46,13 @@ export function SignInForm({
                             const password = formData.get('password') as string;
                             signIn(
                                 {
-                                    body: {
-                                        email,
-                                        password,
-                                    },
+                                    email,
+                                    password,
                                 },
                                 {
                                     onSuccess(data) {
                                         toast.success(
-                                            `Login as ${data?.email}`
+                                            `Login as ${data.data?.user.email}`
                                         );
                                         router.push('/');
                                     },
