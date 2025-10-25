@@ -16,7 +16,7 @@ A powerful, feature-rich starter template for building modern web applications w
 
 - **Elysia.js** for the backend
   - **Drizzle ORM**
-  - **Lucia Auth** (why?, because it's customizable)
+  - **better-auth**
 - Monorepo structure with **bun** as the package manager
   - Fully dockerized deployment
 
