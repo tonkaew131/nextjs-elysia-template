@@ -29,6 +29,13 @@
             "when": 1744977554909,
             "tag": "0003_Cascade session when user is deleted",
             "breakpoints": true
+        },
+        {
+            "idx": 4,
+            "version": "7",
+            "when": 1761405637852,
+            "tag": "0004_Migrate from Lucia to better-auth",
+            "breakpoints": true
         }
     ]
 }
