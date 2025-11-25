@@ -7,7 +7,20 @@ import { UnauthorizedError } from './shared/error';
 import { TestController } from './test/test.controller';
 
 const api = new Elysia()
-    .use(swagger())
+    .use(
+        swagger({
+            scalarConfig: {
+                spec: {
+                    url: '/api/swagger/json',
+                },
+                servers: [
+                    {
+                        url: '/api',
+                    },
+                ],
+            },
+        })
+    )
     .use(cors())
     .error({
         UnauthorizedError,

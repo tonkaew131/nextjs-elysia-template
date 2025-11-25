@@ -54,6 +54,9 @@ Launch the development server:
 bun dev
 ```
 
+- [http://localhost:3000](http://localhost:3000) - Next.js frontend
+- [http://localhost:3000/api/swagger](http://localhost:3000/api/swagger) - Elysia.js backend
+
 Generate React Query hooks for API integration:
 
 ```bash

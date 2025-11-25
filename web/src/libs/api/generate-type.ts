@@ -11,7 +11,7 @@ const FILE = ts.factory.createTypeReferenceNode(
 const NULL = ts.factory.createLiteralTypeNode(ts.factory.createNull()); // `null`
 
 async function generateType() {
-    const ast = await openapiTS(new URL('http://localhost:3001/swagger/json'), {
+    const ast = await openapiTS(new URL('http://localhost:3002/swagger/json'), {
         transform(schemaObject) {
             if (schemaObject.format === 'binary') {
                 return schemaObject.nullable
