@@ -6,7 +6,8 @@
         "dev": "bun run --watch src/app.ts",
         "format": "prettier --write --list-different .",
         "db:migrate": "drizzle-kit migrate",
-        "db:studio": "drizzle-kit studio"
+        "db:studio": "drizzle-kit studio",
+        "db:seed": "bun src/shared/db/seed.ts"
     },
     "dependencies": {
         "@elysiajs/cors": "^1.2.0",
