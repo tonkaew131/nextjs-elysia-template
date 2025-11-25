@@ -44,13 +44,13 @@ export default function Page() {
                 {
                     onSuccess: ({ error }) => {
                         if (error) {
-                            toast.error('เกิดข้อผิดพลาด', {
+                            toast.error('An error occurred', {
                                 description: error.message,
                             });
                             return;
                         }
 
-                        toast.success('เข้าสู่ระบบสำเร็จ');
+                        toast.success('Signed in successfully');
                         router.push('/dashboard');
                     },
                 }
@@ -72,7 +72,7 @@ export default function Page() {
                     <form.Field name="email">
                         {(field) => (
                             <div className="grid gap-2">
-                                <Label htmlFor={field.name}>อีเมล</Label>
+                                <Label htmlFor={field.name}>Email</Label>
                                 <Input
                                     id={field.name}
                                     type="email"
@@ -88,7 +88,7 @@ export default function Page() {
                     <form.Field name="password">
                         {(field) => (
                             <div className="grid gap-2">
-                                <Label htmlFor={field.name}>รหัสผ่าน</Label>
+                                <Label htmlFor={field.name}>Password</Label>
                                 <Input
                                     id={field.name}
                                     type="password"
@@ -111,7 +111,7 @@ export default function Page() {
                                         field.handleChange(!!checked)
                                     }
                                 />
-                                <Label htmlFor={field.name}>จดจำฉัน?</Label>
+                                <Label htmlFor={field.name}>Remember me?</Label>
                             </div>
                         )}
                     </form.Field>
@@ -120,7 +120,7 @@ export default function Page() {
                         className="mt-4"
                         disabled={signInMutation.isPending}
                     >
-                        เข้าสู่ระบบ
+                        Sign In
                     </Button>
                 </form>
             </Card>
