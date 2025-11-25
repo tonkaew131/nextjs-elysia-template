@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
@@ -25,8 +25,11 @@ const useSignInWithEmailAndPassword = () => {
 };
 
 export default function Page() {
+    const searchParams = useSearchParams();
     const router = useRouter();
     const signInMutation = useSignInWithEmailAndPassword();
+
+    const redirectTo = searchParams.get('redirect') || '/dashboard';
 
     const form = useForm({
         defaultValues: {
@@ -51,7 +54,7 @@ export default function Page() {
                         }
 
                         toast.success('Signed in successfully');
-                        router.push('/dashboard');
+                        router.push(redirectTo);
                     },
                 }
             );
