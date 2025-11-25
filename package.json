@@ -7,13 +7,14 @@
   "scripts": {
     "format": "bun run --filter '*' format",
     "lint": "bun run --filter '*' lint",
-    "dev": "dotenv -- bun run --filter '*' dev",
+    "dev": "dotenv -- concurrently \"bun run --filter api dev\" \"bun run --filter web dev\"",
     "db:gen": "cd api && drizzle-kit generate",
     "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate",
     "db:studio": "dotenv -- bun run --filter 'api' --elide-lines=0 db:studio",
     "api:gen": "bun run --filter 'web' --elide-lines=0 api:gen"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "dotenv-cli": "^8.0.0"
   }
 }
