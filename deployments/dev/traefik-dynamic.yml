@@ -1,0 +1,32 @@
+http:
+  routers:
+    api-router:
+      rule: "PathPrefix(`/api`)"
+      priority: 5
+      entryPoints:
+        - web
+      service: api-service
+      middlewares:
+        - strip-api
+    web-router:
+      rule: "PathPrefix(`/`)"
+      priority: 1
+      entryPoints:
+        - web
+      service: web-service
+
+  middlewares:
+    strip-api:
+      stripPrefix:
+        prefixes:
+          - /api
+
+  services:
+    web-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3001"
+    api-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3002"

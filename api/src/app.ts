@@ -22,7 +22,7 @@ const api = new Elysia()
     .mount(auth.handler)
     .use(TestController)
     .get('/', () => 'Hello Elysia')
-    .listen(3001);
+    .listen(3002);
 
 console.log(
     `🦊 Elysia is running at http://${api.server?.hostname}:${api.server?.port}/swagger`
