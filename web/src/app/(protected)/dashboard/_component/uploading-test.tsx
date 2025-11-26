@@ -30,7 +30,6 @@ export default function UploadingTest() {
                     mutate({
                         body: {
                             file: file,
-                            'nullable-file': null,
                         },
                     })
                 }
