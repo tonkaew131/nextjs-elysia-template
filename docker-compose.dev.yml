@@ -27,3 +27,14 @@ services:
             - "./deployments/dev/traefik-dynamic.yml:/dynamic.yml:ro"
         extra_hosts:
           - "host.docker.internal:host-gateway"
+    rustfs:
+        image: rustfs/rustfs:latest
+        restart: always
+        ports:
+            - 9000:9000
+            - 9001:9001
+        volumes:
+            - ./volume/rustfs:/data
+        environment:
+            RUSTFS_ACCESS_KEY: ${RUSTFS_USER}
+            RUSTFS_SECRET_KEY: ${RUSTFS_PASSWORD}
