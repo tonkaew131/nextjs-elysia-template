@@ -21,7 +21,7 @@ BETTER_AUTH_TRUSTED_ORIGINS="${url}"
 # ===========================================================================================`
                 );
                 await Bun.write(".env", newEnv);
-                console.log("\n✅ Updated NEXT_PUBLIC_API_URL in .env file.");
+                console.log("\n✅ Updated NEXT_PUBLIC_API_URL in .env file.\n");
             } else {
                 const newEnv = `${env.trim()}
 # ======= Automatically added by cloudflared-tunnel.ts (please don't change anything) =======
@@ -29,7 +29,7 @@ NEXT_PUBLIC_API_URL="${url}/api"
 BETTER_AUTH_TRUSTED_ORIGINS="${url}"
 # ===========================================================================================`;
                 await Bun.write(".env", newEnv);
-                console.log("\n✅ Added NEXT_PUBLIC_API_URL to .env file.");
+                console.log("\n✅ Added NEXT_PUBLIC_API_URL to .env file.\n");
             }
         }
     }

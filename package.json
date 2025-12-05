@@ -7,7 +7,7 @@
   "scripts": {
     "format": "bun run --filter '*' format",
     "lint": "bun run --filter '*' lint",
-    "dev": "dotenv -- concurrently \"bun run --filter api dev\" \"bun run --filter web dev\"",
+    "dev": "dotenv -- concurrently \"bun run --filter api --elide-lines=0 dev\" \"bun run --filter web --elide-lines=0 dev\"",
     "db:gen": "cd api && drizzle-kit generate",
     "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate",
     "db:studio": "dotenv -- bun run --filter 'api' --elide-lines=0 db:studio",

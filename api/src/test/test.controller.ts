@@ -1,5 +1,7 @@
 import Elysia from 'elysia';
 
+import { s3 } from '@api/shared/s3';
+
 import { DatePayloadDto, DateResponseDto } from './dto/date.dto';
 import { UploadPayloadDto, UploadResponseDto } from './dto/upload.dto';
 
@@ -11,7 +13,14 @@ export const TestController = new Elysia({
         async (context) => {
             const { body, headers } = context;
 
-            console.log(body.file);
+            await s3.write(
+                `uploads/${Date.now()}-${body.file.name}`,
+                body.file,
+                {
+                    type: body.file.type,
+                }
+            );
+
             headers['content-type'] = body.file.type;
             return body.file;
         },
