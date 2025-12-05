@@ -57,7 +57,7 @@ async function upsertManagedEnv(update: {
         await Bun.write(".env", newEnv);
     } else {
         const block = buildManagedBlock(update);
-        const newEnv = `${env.trim()}\n${block}`.trim() + "\n";
+        const newEnv = `${env.trim()}\n\n${block}`.trim() + "\n";
         await Bun.write(".env", newEnv);
     }
 }

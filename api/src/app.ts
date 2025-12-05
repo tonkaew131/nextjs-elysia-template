@@ -1,5 +1,5 @@
 import cors from '@elysiajs/cors';
-import swagger from '@elysiajs/swagger';
+import { openapi } from '@elysiajs/openapi';
 import { Elysia } from 'elysia';
 
 import { auth } from './shared/auth';
@@ -8,10 +8,10 @@ import { TestController } from './test/test.controller';
 
 const api = new Elysia()
     .use(
-        swagger({
-            scalarConfig: {
+        openapi({
+            scalar: {
                 spec: {
-                    url: '/api/swagger/json',
+                    url: '/api/openapi/json',
                 },
                 servers: [
                     {
