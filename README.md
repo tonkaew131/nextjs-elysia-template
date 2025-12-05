@@ -17,8 +17,12 @@ A powerful, feature-rich starter template for building modern web applications w
 - **Elysia.js** for the backend
   - **Drizzle ORM**
   - **better-auth**
+  - Local S3 storage with [RustFS](https://github.com/rustfs/rustfs)
 - Monorepo structure with **bun** as the package manager
   - Fully dockerized deployment
+- Automatic Cloudflare Tunnel setup for local development
+  - Tunneled S3 public URLs, Website, and API (to `/api`)
+  - Automatic updates to `.env` file
 
 ## 🛠️ Installation
 
@@ -46,6 +50,12 @@ Start development database:
 
 ```bash
 docker-compose -f docker-compose.dev.yml up -d
+```
+
+Setup Cloudflare Tunnel (Optional):
+
+```bash
+bun tunnel
 ```
 
 Launch the development server:
