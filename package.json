@@ -12,7 +12,8 @@
     "db:migrate": "dotenv -- bun run --filter 'api' --elide-lines=0 db:migrate",
     "db:studio": "dotenv -- bun run --filter 'api' --elide-lines=0 db:studio",
     "db:seed": "dotenv -- bun run --filter 'api' --elide-lines=0 db:seed",
-    "api:gen": "bun run --filter 'web' --elide-lines=0 api:gen"
+    "api:gen": "bun run --filter 'web' --elide-lines=0 api:gen",
+    "tunnel": "bun scripts/cloudflared-tunnel.ts"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
