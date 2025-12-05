@@ -65,7 +65,8 @@ bun dev
 ```
 
 - [http://localhost:3000](http://localhost:3000) - Next.js frontend
-- [http://localhost:3000/api/swagger](http://localhost:3000/api/swagger) - Elysia.js backend
+- [http://localhost:3000/api/openapi](http://localhost:3000/api/openapi) - Elysia.js backend
+- [http://localhost:9000](http://localhost:9000) - Local S3 storage (RustFS)
 
 Generate React Query hooks for API integration:
 
