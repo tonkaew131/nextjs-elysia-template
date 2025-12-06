@@ -15,7 +15,7 @@ export default async function Page() {
         },
     });
 
-    if (session.error) {
+    if (!session.data) {
         return redirect('/sign-in');
     }
 
